@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="domain.Book" table="book_data">
+        <id name="bookId" column="book_id"></id>
+        <property name="bookName" column="book_name"></property>
+        <property name="bookPrice" column="book_price"></property>
+    </class>
+</hibernate-mapping>

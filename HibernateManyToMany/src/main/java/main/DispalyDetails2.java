@@ -1,0 +1,44 @@
+package main;
+
+import domain.Course;
+import domain.Student;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import java.util.List;
+import java.util.Scanner;
+
+public class DispalyDetails2
+{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter the id ");
+        int id =sc.nextInt();
+        Configuration cfg;
+        SessionFactory factory;
+        Session ses;
+        Transaction tx;
+
+        cfg= new Configuration();
+        cfg=cfg.configure();
+        cfg=cfg.addAnnotatedClass(Student.class);
+        cfg=cfg.addAnnotatedClass(Course.class);
+
+        factory=cfg.buildSessionFactory();
+        ses= factory.openSession();
+
+        Course c1=ses.load(Course.class,id);
+        System.out.println(c1.getCourseName());
+        List<Student> students=c1.getStudentList();
+
+        for(Student s:students)
+        {
+            System.out.println(s);
+        }
+
+
+
+    }
+}
